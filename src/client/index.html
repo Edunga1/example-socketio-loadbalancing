@@ -1,0 +1,31 @@
+<ul class="chat-window" style="height: 10em; overflow-y: scroll"></ul>
+<form class="chat-form" action="">
+  <input id="m" autocomplete="off" /><button>Send</button>
+</form>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+  var socket = io();
+  var elChatWindow = document.querySelector('.chat-window');
+  var elChatForm = document.querySelector('.chat-form');
+  var elMessage = document.querySelector('#m');
+  var username = btoa(Math.floor(Math.random() * 100));
+
+  function print(...str) {
+    var text = str.reduce((a, b) => a + ' ' + b);
+    elChatWindow.innerHTML = '<li>' + text + '</li>' + elChatWindow.innerHTML;
+  }
+
+  socket.on('chat', (msg) => {
+    print(msg);
+  });
+
+  elChatForm.onsubmit = () => {
+    socket.emit('send', username, elMessage.value);
+    elMessage.value = '';
+    return false;
+  };
+
+  print('name:', username);
+</script>

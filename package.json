@@ -1,0 +1,21 @@
+{
+  "name": "socketio-redis-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.1.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
+  },
+  "scripts": {
+    "docker:build": "docker build -t webchat ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

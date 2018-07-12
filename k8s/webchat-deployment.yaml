@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webchat
+spec:
+  selector:
+    matchLabels:
+      app: webchat
+  template:
+    metadata:
+      labels:
+        app: webchat
+    spec:
+      containers:
+      - name: webchat
+        image: webchat:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3131
